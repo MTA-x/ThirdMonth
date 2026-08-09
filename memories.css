@@ -1,0 +1,699 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #190a18,
+            #46142f,
+            #8c2854
+        );
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    opacity: .25;
+
+    color:
+        rgba(255,255,255,.7);
+
+    animation:
+        floatHeart linear infinite;
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .3;
+    }
+
+    90% {
+        opacity: .2;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   TOP NAVIGATION
+========================================= */
+
+.top-navigation {
+    position: fixed;
+
+    top: 28px;
+    left: 28px;
+
+    z-index: 1000;
+}
+
+
+/* =========================================
+   BACK TO LETTER BUTTON
+========================================= */
+
+.back-letter-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 22px;
+
+    border-radius:
+        100px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    color:
+        rgba(255,255,255,.88);
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.12);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.back-letter-button:hover {
+    background: white;
+
+    color: #8c2854;
+
+    border-color: white;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,150,195,.22);
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.memories-page {
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1200px, 92%);
+
+    margin:
+        0 auto;
+
+    padding:
+        90px 0 80px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   SMALL TOP TEXT
+========================================= */
+
+.mini-text {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: .6;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size:
+        clamp(70px, 10vw, 120px);
+
+    font-weight: normal;
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 8px 30px
+        rgba(255,120,170,.4);
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.memories-description {
+    max-width: 650px;
+
+    margin:
+        0 auto 60px;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    opacity: .8;
+}
+
+
+/* =========================================
+   MEMORY GRID
+========================================= */
+
+.memory-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   MEMORY CARD
+========================================= */
+
+.memory-card {
+    position: relative;
+
+    padding:
+        16px 16px 24px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.22);
+
+    transition:
+        transform .4s ease,
+        background .4s ease,
+        box-shadow .4s ease;
+
+    overflow: hidden;
+}
+
+
+.memory-card:hover {
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+    background:
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 28px 60px
+        rgba(0,0,0,.28);
+}
+
+
+/* =========================================
+   PHOTO AREA
+========================================= */
+
+.photo-box {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .6s ease;
+}
+
+
+.memory-card:hover
+.photo-box img {
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================
+   MEMORY CARD TITLE
+========================================= */
+
+.memory-card h2 {
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-top: 20px;
+
+    margin-bottom: 8px;
+
+    color: #ffd9e7;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================
+   MEMORY CARD TEXT
+========================================= */
+
+.memory-card p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    opacity: .72;
+
+    max-width: 95%;
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================
+   FINAL BUTTON AREA
+========================================= */
+
+.final-button-area {
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 65px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   FINAL BUTTON
+========================================= */
+
+.final-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        16px 34px;
+
+    border-radius:
+        100px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.10);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.15);
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        color .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+
+.final-button:hover {
+    background: white;
+
+    color: #8c2854;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(255,180,210,.30);
+}
+
+
+.final-button:active {
+    transform:
+        translateY(0)
+        scale(.97);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .memories-page {
+        width: 92%;
+    }
+
+    .memory-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-navigation {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+
+        padding:
+            16px 15px 0;
+
+        display: flex;
+
+        justify-content: center;
+    }
+
+
+    .back-letter-button {
+        padding:
+            10px 16px;
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .memories-page {
+        width: 92%;
+
+        padding:
+            35px 0 60px;
+    }
+
+
+    .mini-text {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.6;
+    }
+
+
+    h1 {
+        font-size: 68px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .memories-description {
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        margin-bottom: 40px;
+    }
+
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    .memory-card {
+        padding:
+            14px 14px 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .photo-box {
+        border-radius: 15px;
+    }
+
+
+    .memory-card h2 {
+        font-size: 30px;
+
+        margin-top: 17px;
+    }
+
+
+    .memory-card p {
+        font-size: 13px;
+    }
+
+
+    .final-button-area {
+        margin-top: 45px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .final-button {
+        padding:
+            14px 25px;
+
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .memories-page {
+        width: 94%;
+    }
+
+
+    h1 {
+        font-size: 58px;
+    }
+
+
+    .memories-description {
+        font-size: 12px;
+    }
+
+
+    .memory-card h2 {
+        font-size: 27px;
+    }
+
+
+    .memory-card p {
+        font-size: 12px;
+    }
+
+
+    .final-button {
+        width: 100%;
+
+        max-width: 280px;
+
+        padding:
+            14px 18px;
+
+        font-size: 9px;
+    }
+}

@@ -1,0 +1,783 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(190, 28, 95, .45),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 50, 125, .15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #16030e,
+            #3c0921,
+            #6d1239,
+            #270616
+        );
+}
+
+
+/* =========================================
+   INTRO OVERLAY
+========================================= */
+
+.final-intro-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9000;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120, 20, 65, .25),
+            rgba(15, 2, 10, .94)
+        );
+
+    opacity: 1;
+
+    transition:
+        opacity 1.4s ease;
+}
+
+
+body.final-ready
+.final-intro-overlay {
+    opacity: 0;
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.hearts {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.heart {
+    position: absolute;
+
+    bottom: -60px;
+
+    opacity: 0;
+
+    color: #ff4f91;
+
+    text-shadow:
+        0 0 12px
+        rgba(255, 50, 130, .85);
+
+    animation:
+        floatingHeart linear infinite;
+}
+
+
+@keyframes floatingHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .45;
+    }
+
+    50% {
+        opacity: .25;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg)
+            scale(1.15);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   INTRO HEARTS
+========================================= */
+
+.intro-heart {
+    position: fixed;
+
+    bottom: -80px;
+
+    z-index: 9999;
+
+    pointer-events: none;
+
+    color: #ff6fa8;
+
+    text-shadow:
+        0 0 12px rgba(255, 70, 145, .9),
+        0 0 30px rgba(255, 40, 125, .55);
+
+    animation:
+        introHeartRise
+        var(--duration)
+        cubic-bezier(.2,.75,.3,1)
+        forwards;
+}
+
+
+@keyframes introHeartRise {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(0)
+            translateX(0)
+            scale(.4)
+            rotate(0deg);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-115vh)
+            translateX(var(--drift))
+            scale(1.35)
+            rotate(var(--rotation));
+    }
+}
+
+
+/* =========================================
+   TOP NAVIGATION
+========================================= */
+
+.top-navigation {
+    position: fixed;
+
+    top: 28px;
+    left: 28px;
+
+    z-index: 1000;
+
+    opacity: 0;
+
+    transform:
+        translateY(-12px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+
+body.final-ready
+.top-navigation {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 22px;
+
+    border-radius:
+        100px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    color:
+        rgba(255,255,255,.88);
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.12);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease;
+}
+
+
+.back-button:hover {
+    background:
+        rgba(255,255,255,.12);
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    color: white;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.final-page {
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1200px, 92%);
+
+    margin:
+        0 auto;
+
+    padding:
+        80px 0 60px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        scale(.98);
+
+    filter:
+        blur(5px);
+
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s ease,
+        filter 1.3s ease;
+}
+
+
+body.final-ready
+.final-page {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter: blur(0);
+}
+
+
+/* =========================================
+   TOP TEXT
+========================================= */
+
+.top-text {
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 7px;
+
+    opacity: .72;
+}
+
+
+.you-text {
+    margin-top: 15px;
+
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size: 48px;
+
+    color: #ff61a3;
+
+    text-shadow:
+        0 0 18px
+        rgba(255, 70, 150, .5);
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+    margin-top: 18px;
+
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size:
+        clamp(75px, 10vw, 145px);
+
+    line-height: .95;
+
+    font-weight: normal;
+
+    color: #ffd5e5;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,160,200,.75),
+
+        0 0 30px
+        rgba(255,40,125,.65),
+
+        0 0 70px
+        rgba(255,20,100,.35);
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    position: relative;
+
+    max-width: 620px;
+
+    margin:
+        38px auto 50px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+
+    color:
+        rgba(255,255,255,.9);
+}
+
+
+.message::before,
+.message::after {
+    content: "♥";
+
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #ff72ac;
+
+    font-size: 18px;
+
+    text-shadow:
+        0 0 14px
+        rgba(255,100,160,.8);
+}
+
+
+.message::before {
+    left: -80px;
+}
+
+
+.message::after {
+    right: -80px;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    max-width: 900px;
+
+    margin:
+        0 auto;
+}
+
+
+.love-card {
+    padding:
+        28px 20px 26px;
+
+    border-radius:
+        18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.035)
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.08),
+
+        0 18px 40px
+        rgba(0,0,0,.15);
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.love-card:hover {
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(255,255,255,.11);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.28),
+
+        0 0 30px
+        rgba(255,65,135,.14);
+}
+
+
+/* =========================================
+   CARD ICON
+========================================= */
+
+.icon {
+    height: 48px;
+
+    margin-bottom: 10px;
+
+    font-size: 39px;
+
+    color: #ff6aa7;
+
+    line-height: 48px;
+
+    text-shadow:
+        0 0 13px
+        rgba(255,65,150,.65);
+}
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.love-card h2 {
+    margin-bottom: 12px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    color: #fff0f6;
+}
+
+
+.love-card p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    opacity: .8;
+}
+
+
+/* =========================================
+   FINAL TITLE
+========================================= */
+
+.final-title {
+    margin-top: 42px;
+
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size:
+        clamp(38px, 5vw, 58px);
+
+    color: #ffd1e3;
+
+    text-shadow:
+        0 0 18px
+        rgba(255,80,150,.4);
+}
+
+
+/* =========================================
+   ALWAYS TEXT
+========================================= */
+
+.always-text {
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    opacity: .8;
+}
+
+
+/* =========================================
+   FINAL HEART
+========================================= */
+
+.final-heart {
+    margin-top: 25px;
+
+    font-size: 55px;
+
+    color: #ff5f9e;
+
+    text-shadow:
+        0 0 10px #ff3d89,
+        0 0 25px #ff3d89,
+        0 0 50px
+        rgba(255,61,137,.7);
+
+    animation:
+        finalHeartBeat 1.8s infinite;
+}
+
+
+@keyframes finalHeartBeat {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.13);
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .message::before,
+    .message::after {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-navigation {
+        position: absolute;
+
+        top: 16px;
+        left: 16px;
+    }
+
+
+    .back-button {
+        padding:
+            10px 15px;
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .final-page {
+        width: 92%;
+
+        padding:
+            75px 0 45px;
+    }
+
+
+    .top-text {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .you-text {
+        font-size: 38px;
+    }
+
+
+    h1 {
+        font-size: 69px;
+
+        margin-top: 10px;
+    }
+
+
+    .message {
+        margin:
+            28px auto 38px;
+
+        font-size: 15px;
+
+        line-height: 1.55;
+    }
+
+
+    .cards {
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+
+        width: 100%;
+    }
+
+
+    .love-card {
+        padding:
+            22px 18px;
+    }
+
+
+    .final-title {
+        margin-top: 35px;
+
+        font-size: 42px;
+    }
+
+
+    .always-text {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        line-height: 1.8;
+    }
+
+
+    .final-heart {
+        font-size: 46px;
+    }
+}

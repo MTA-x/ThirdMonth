@@ -1,0 +1,1336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #190a18,
+            #46142f,
+            #8c2854
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+.hearts {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+.heart {
+    position: absolute;
+
+    bottom: -50px;
+
+    opacity: .3;
+
+    animation:
+        floatHeart linear infinite;
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .35;
+    }
+
+    90% {
+        opacity: .25;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   FIRST SCREEN
+========================================= */
+
+.container {
+    position: relative;
+
+    z-index: 10;
+
+    width: 92%;
+
+    max-width: 850px;
+
+    padding:
+        60px 35px;
+
+    border-radius:
+        35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.35),
+
+        inset 0 1px 0
+        rgba(255,255,255,.13);
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MINI TITLE
+========================================= */
+
+.mini-text {
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: .65;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+h1 {
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size:
+        clamp(
+            55px,
+            10vw,
+            95px
+        );
+
+    font-weight: normal;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 5px 25px
+        rgba(255,120,170,.4);
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+    max-width: 620px;
+
+    margin:
+        0 auto 40px;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    opacity: .82;
+}
+
+
+/* =========================================
+   BUTTON AREA
+========================================= */
+
+.lock-area {
+    position: relative;
+
+    z-index: 20;
+
+    margin-top: 30px;
+}
+
+
+.love-icon {
+    font-size: 48px;
+
+    margin-bottom: 20px;
+
+    animation:
+        heartBeat 1.8s infinite;
+}
+
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.14);
+    }
+}
+
+
+/* =========================================
+   OPEN LETTER BUTTON
+========================================= */
+
+#openButton {
+    position: relative;
+
+    z-index: 30;
+
+    border: none;
+
+    outline: none;
+
+    padding:
+        17px 42px;
+
+    border-radius:
+        100px;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    background: white;
+
+    color: #8c2854;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    box-shadow:
+        0 10px 35px
+        rgba(255,190,215,.35);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+    animation:
+        pulseButton 2s infinite;
+}
+
+
+#openButton:hover {
+    transform:
+        translateY(-3px)
+        scale(1.04);
+}
+
+
+#openButton:active {
+    transform:
+        scale(.98);
+}
+
+
+@keyframes pulseButton {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,.35),
+
+            0 10px 35px
+            rgba(255,190,215,.35);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 18px
+            rgba(255,255,255,0),
+
+            0 10px 35px
+            rgba(255,190,215,.35);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(255,255,255,0),
+
+            0 10px 35px
+            rgba(255,190,215,.35);
+    }
+}
+
+
+.waiting-text {
+    margin-top: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    opacity: .5;
+}
+
+
+/* =========================================
+   LETTER SCREEN
+========================================= */
+
+.letter-screen {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle,
+            #8c2854,
+            #250b20
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+.letter-screen.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   ENVELOPE WRAPPER
+========================================= */
+
+.envelope-wrapper {
+    position: relative;
+
+    width: 430px;
+
+    max-width: 95vw;
+
+    height: 290px;
+
+    perspective: 1000px;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        #d98aa7;
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,.35);
+}
+
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        215px solid
+        #efadc3;
+
+    border-right:
+        215px solid
+        #efadc3;
+
+    border-top:
+        145px solid
+        transparent;
+
+    border-bottom:
+        145px solid
+        #efadc3;
+
+    z-index: 4;
+}
+
+
+/* =========================================
+   ENVELOPE FLAP
+========================================= */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        215px solid
+        transparent;
+
+    border-right:
+        215px solid
+        transparent;
+
+    border-top:
+        155px solid
+        #f3b8cc;
+
+    transform-origin:
+        top;
+
+    z-index: 5;
+
+    transition:
+        transform 1s ease,
+        z-index .1s .5s;
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    position: absolute;
+
+    width: 88%;
+
+    height: 250px;
+
+    left: 6%;
+
+    bottom: 15px;
+
+    padding: 30px;
+
+    background:
+        #fff9f2;
+
+    color:
+        #5c3544;
+
+    border-radius:
+        8px;
+
+    text-align: left;
+
+    overflow-y: auto;
+
+    z-index: 2;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.2);
+
+    transition:
+        transform 1.3s ease .6s,
+        width 1.3s ease 1.5s,
+        height 1.3s ease 1.5s,
+        left 1.3s ease 1.5s,
+        top 1.3s ease 1.5s;
+}
+
+
+.letter h2 {
+    font-family:
+        'Great Vibes',
+        cursive;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    color:
+        #a13961;
+
+    margin-bottom:
+        20px;
+}
+
+
+.letter p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    white-space:
+        pre-line;
+}
+
+
+.signature {
+    margin-top:
+        30px;
+
+    text-align:
+        right;
+
+    font-family:
+        'Great Vibes',
+        cursive !important;
+
+    font-size:
+        30px !important;
+
+    color:
+        #a13961;
+}
+
+
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
+
+.envelope-wrapper.open
+.flap {
+    transform:
+        rotateX(180deg);
+
+    z-index: 1;
+}
+
+
+.envelope-wrapper.open
+.letter {
+    position: fixed;
+
+    top: 50%;
+
+    left: 50%;
+
+    bottom: auto;
+
+    transform:
+        translate(-50%, -50%);
+
+    width:
+        min(650px, 92vw);
+
+    height:
+        min(650px, 78vh);
+
+    padding: 40px;
+
+    z-index: 1000;
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
+}
+
+
+/* =========================================
+   LETTER TITLE
+========================================= */
+
+.letter-title {
+    position: fixed;
+
+    top: 30px;
+
+    left: 50%;
+
+    z-index: 500;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease 2.5s,
+        transform 1s ease 2.5s;
+}
+
+
+.letter-screen.show
+.letter-title {
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    opacity: .65;
+}
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+#nextButton {
+    position: fixed;
+
+    right: 35px;
+
+    bottom: 35px;
+
+    z-index: 9999;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    outline: none;
+
+    padding:
+        15px 30px;
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(255,255,255,.15);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color: white;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    pointer-events: none;
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        background .3s ease,
+        color .3s ease;
+}
+
+
+.letter-screen.show
+#nextButton {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+
+    transition-delay:
+        3s;
+}
+
+
+#nextButton:hover {
+    background:
+        white;
+
+    color:
+        #8c2854;
+
+    transform:
+        translateY(-3px);
+}
+
+
+#nextButton:active {
+    transform:
+        scale(.97);
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.letter::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.letter::-webkit-scrollbar-track {
+    background:
+        transparent;
+}
+
+
+.letter::-webkit-scrollbar-thumb {
+    background:
+        rgba(161,57,97,.3);
+
+    border-radius:
+        20px;
+}
+
+
+/* =========================================
+   NEXT PAGE TRANSITION OVERLAY
+========================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99990;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(140,40,84,.40),
+            rgba(25,10,24,.97)
+        );
+
+    opacity: 0;
+
+    transition:
+        opacity 1.15s ease;
+}
+
+
+body.page-leaving::after {
+    opacity: 1;
+}
+
+
+/* =========================================
+   LETTER EXIT ANIMATION
+========================================= */
+
+body.page-leaving
+.envelope-wrapper.open
+.letter {
+    animation:
+        letterExit
+        1.2s
+        cubic-bezier(
+            .65,
+            0,
+            .35,
+            1
+        )
+        forwards;
+}
+
+
+@keyframes letterExit {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1)
+            rotate(0deg);
+
+        filter:
+            blur(0);
+    }
+
+    45% {
+        opacity: .95;
+
+        transform:
+            translate(-50%, -54%)
+            scale(.96)
+            rotate(-.5deg);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -68%)
+            scale(.82)
+            rotate(-2deg);
+
+        filter:
+            blur(5px);
+    }
+}
+
+
+/* =========================================
+   ENVELOPE EXIT
+========================================= */
+
+body.page-leaving
+.envelope {
+    animation:
+        envelopeExit
+        1s ease forwards;
+}
+
+
+@keyframes envelopeExit {
+
+    from {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            scale(.84)
+            translateY(45px);
+    }
+}
+
+
+/* =========================================
+   LETTER TITLE EXIT
+========================================= */
+
+body.page-leaving
+.letter-title {
+    animation:
+        titleExit
+        .7s ease forwards;
+}
+
+
+@keyframes titleExit {
+
+    from {
+        opacity: .65;
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-15px);
+    }
+}
+
+
+/* =========================================
+   NEXT BUTTON EXIT
+========================================= */
+
+body.page-leaving
+#nextButton {
+    pointer-events: none;
+
+    animation:
+        nextExit
+        .5s ease forwards;
+}
+
+
+@keyframes nextExit {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+}
+
+
+/* =========================================
+   TRANSITION HEARTS
+========================================= */
+
+.transition-heart {
+    position: fixed;
+
+    z-index: 99999;
+
+    pointer-events: none;
+
+    color:
+        #ff8bb9;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,110,170,.9),
+
+        0 0 25px
+        rgba(255,70,145,.4);
+
+    animation:
+        transitionHeartMove
+        1.45s ease-out
+        forwards;
+}
+
+
+@keyframes transitionHeartMove {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(
+                0,
+                30px
+            )
+            scale(.45)
+            rotate(0deg);
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--heart-x),
+                -120px
+            )
+            scale(1.5)
+            rotate(
+                var(--heart-rotate)
+            );
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow: hidden;
+    }
+
+
+    .container {
+        width: 92%;
+
+        padding:
+            45px 20px;
+
+        border-radius:
+            25px;
+    }
+
+
+    .mini-text {
+        font-size:
+            9px;
+
+        letter-spacing:
+            3px;
+    }
+
+
+    h1 {
+        font-size:
+            58px;
+    }
+
+
+    .description {
+        font-size:
+            13px;
+
+        line-height:
+            1.7;
+
+        margin-bottom:
+            30px;
+    }
+
+
+    .love-icon {
+        font-size:
+            40px;
+    }
+
+
+    #openButton {
+        padding:
+            15px 28px;
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            1.5px;
+    }
+
+
+    .envelope-wrapper {
+        width:
+            330px;
+
+        height:
+            220px;
+
+        max-width:
+            92vw;
+    }
+
+
+    .envelope::before {
+        border-left-width:
+            165px;
+
+        border-right-width:
+            165px;
+
+        border-top-width:
+            110px;
+
+        border-bottom-width:
+            110px;
+    }
+
+
+    .flap {
+        border-left-width:
+            165px;
+
+        border-right-width:
+            165px;
+
+        border-top-width:
+            120px;
+    }
+
+
+    .letter {
+        height:
+            190px;
+
+        padding:
+            22px;
+    }
+
+
+    .letter h2 {
+        font-size:
+            34px;
+    }
+
+
+    .letter p {
+        font-size:
+            14px;
+
+        line-height:
+            1.8;
+    }
+
+
+    .envelope-wrapper.open
+    .letter {
+        position: fixed;
+
+        top: 50%;
+
+        left: 50%;
+
+        bottom: auto;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            );
+
+        width:
+            92vw;
+
+        height:
+            76vh;
+
+        padding:
+            25px;
+
+        border-radius:
+            12px;
+    }
+
+
+    #nextButton {
+        right:
+            18px;
+
+        bottom:
+            18px;
+
+        padding:
+            13px 22px;
+
+        font-size:
+            10px;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .letter-title {
+        top:
+            18px;
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            3px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        width:
+            94%;
+
+        padding:
+            35px 15px;
+    }
+
+
+    h1 {
+        font-size:
+            50px;
+    }
+
+
+    .description {
+        font-size:
+            12px;
+    }
+
+
+    .envelope-wrapper {
+        width:
+            300px;
+
+        height:
+            200px;
+    }
+
+
+    .envelope::before {
+        border-left-width:
+            150px;
+
+        border-right-width:
+            150px;
+
+        border-top-width:
+            100px;
+
+        border-bottom-width:
+            100px;
+    }
+
+
+    .flap {
+        border-left-width:
+            150px;
+
+        border-right-width:
+            150px;
+
+        border-top-width:
+            110px;
+    }
+
+
+    .envelope-wrapper.open
+    .letter {
+        width:
+            94vw;
+
+        height:
+            74vh;
+
+        padding:
+            22px;
+    }
+}
